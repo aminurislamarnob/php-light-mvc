@@ -1,15 +1,15 @@
 <?php
 class Pages extends Controller{
     public function __construct(){
-        //echo "Pages Load<br>";
+        $this->postModel = $this->model('Post');
     }
 
     public function index(){
+        $posts = $this->postModel->getPosts();
         $data = [
-            'title' => 'Welcome to home page'
+            'title' => 'Welcome to home page',
+            'posts' => $posts
         ];
         $this->view('pages/index', $data);
     }
 }
-
-?>
